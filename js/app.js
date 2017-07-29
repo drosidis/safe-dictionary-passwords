@@ -10,7 +10,9 @@ $(function() {
     $loading.show();
     $results.hide();
     $.get('dictionary/words.txt', function(data) {
-      dictionary = data.split(/\r?\n/);
+      dictionary = data.split(/\r?\n/).filter(function(word) {
+        return word.length; // Removes empty lines
+      });
       calculate();
       $loading.hide();
       $results.show();
@@ -59,7 +61,7 @@ $(function() {
     var numberOfDigits = parseInt( $('input[name=number-of-digits]:checked').val() );
     // Calculate bit strength
     var strengthInBits = calculateStrengthInBits(dictionary, numberOfWords, numberOfDigits);
-    $strength.text(strengthInBits + 'bits');
+    $strength.text(strengthInBits.toFixed(1) + ' bits');
     // Create some passwords
     $passwords.empty();
     for (var i=0; i<5; i++) {
@@ -68,11 +70,9 @@ $(function() {
     }
   }
 
-  // --------------- Initialise
+  // --------------- Initialise: attach event listeners and load dictionary
   $('input:radio').change(calculate);
   $('.generateBtn').click(calculate);
-
-  // --------------- Initialise
   loadDictionary();
 
 });
