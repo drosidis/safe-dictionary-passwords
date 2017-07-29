@@ -11,6 +11,7 @@ $(function() {
     $results.hide();
     $.get('dictionary/words.txt', function(data) {
       dictionary = data.split(/\r?\n/);
+      calculate();
       $loading.hide();
       $results.show();
     });
@@ -29,11 +30,26 @@ $(function() {
     return Math.log(combinations) / Math.log(2);
   }
 
+  // Returns a random integer in the domain [0, upperLimit)
+  function randomInt(upperLimit) {
+    return Math.floor(Math.random() * upperLimit);
+  }
+
   function createPassword(dictionary, numberOfWords, numberOfDigits) {
     var password = [];
+    // Words
     for (var i=0; i<numberOfWords; i++) {
-      password.push( dictionary[Math.floor(Math.random() * dictionary.length)] );
+      password.push( dictionary[randomInt(dictionary.length)] );
     }
+    // Inject a number if required
+    if (numberOfDigits) {
+      var position = randomInt(password.length + 1);
+      console.log(position);
+
+      var number = randomInt(Math.pow(10, numberOfDigits));
+      password.splice(position, 0, number);
+    }
+    // Join
     return password.join('-');
   }
 
