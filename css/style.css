@@ -77,14 +77,15 @@ h1 {
 .sdp-radio input[type="radio"] + label:before {
   content: ' ';
   display:inline-block;
-  width:19px;
-  height:19px;
+  width:14px;
+  height:14px;
   margin:-1px 4px 0 0;
   vertical-align:middle;
-  border-radius:  50%;
-  background-color:#ddd;
+  border-radius: 50%;
+  border: .2rem solid #ccc;
 }
 
 .sdp-radio input[type="radio"]:checked + label:before {
   background-color:#50DDC1;
+  border-color: #50DDC1;
 }
