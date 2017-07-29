@@ -1,4 +1,90 @@
-.title {
-  font-size: 24px;
+body {
+  font-family: arial, sans-serif;
+  margin: 0;
+  background-color: rgb(247, 247, 247);
+}
+
+.panel {
+  background-color: #fff;
+  border: 1px solid #aaa;
+  padding: 20px;
+  max-width: 700px;
+  margin: 60px auto;
+  border-left: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+}
+
+.like-link {
+  text-decoration: none;
+  cursor: pointer;
+  color: #3498db;
+}
+
+.like-link:hover {
+  color: #f96;
+}
+
+/* _______________ Radio buttons _______________ */
+h1 {
+  background-color: #A39FA4;
+  padding: 20px;
+  margin: -20px -20px 10px -20px;
+}
+
+
+/* _______________ Radio buttons _______________ */
+
+.large-line {
+  line-height: 1.7em;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.password, .strength {
+  padding: 5px;
+  white-space: nowrap;
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
   font-weight: bold;
+  font-size: 18px;
+}
+
+.strong {
+  color: #009B7D;
+}
+
+.weak {
+  color: #F9344F;
+}
+
+/* _______________ Radio buttons _______________ */
+
+.sdp-radio {
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.sdp-radio input[type="radio"] {
+  display:none;
+}
+
+.sdp-radio input[type="radio"] + label {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.sdp-radio input[type="radio"] + label:before {
+  content: ' ';
+  display:inline-block;
+  width:19px;
+  height:19px;
+  margin:-1px 4px 0 0;
+  vertical-align:middle;
+  border-radius:  50%;
+  background-color:#ddd;
+}
+
+.sdp-radio input[type="radio"]:checked + label:before {
+  background-color:#50DDC1;
 }

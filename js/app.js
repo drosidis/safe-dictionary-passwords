@@ -61,13 +61,23 @@ $(function() {
     var numberOfDigits = parseInt( $('input[name=number-of-digits]:checked').val() );
     // Calculate bit strength
     var strengthInBits = calculateStrengthInBits(dictionary, numberOfWords, numberOfDigits);
-    $strength.text(strengthInBits.toFixed(1) + ' bits');
+    $strength.text(strengthInBits.toFixed(1));
     // Create some passwords
-    $passwords.empty();
-    for (var i=0; i<5; i++) {
-      var password = createPassword(dictionary, numberOfWords, numberOfDigits);
-      $('<li>').text(password).appendTo($passwords);
+    var password = createPassword(dictionary, numberOfWords, numberOfDigits);
+    $('.password').text(password);
+    // Calculate an alternative password
+    var all = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    var bitsPerChar = Math.log(all.length) / Math.log(2);
+    var lessSafeChars = Math.floor(strengthInBits / bitsPerChar);
+    var otherBits = lessSafeChars * bitsPerChar;
+
+    var other = [];
+    for (var i=0; i<lessSafeChars; i++) {
+      other.push( all.charAt(randomInt(all.length)) );
     }
+    var otherPwd = other.join('');
+    $('.password.weak').text(otherPwd);
+    $('.strength.weak').text(otherBits.toFixed(1));
   }
 
   // --------------- Initialise: attach event listeners and load dictionary
