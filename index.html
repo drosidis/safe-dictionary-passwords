@@ -3,15 +3,59 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="'viewport" content="width=device-width, initial-scale=1">
   <title>Safe dictionary password generator</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="js/app.js"></script>
 </head>
 
 <body>
 
-  <div class="title">
-    Hello world
+  <h5>Generate</h5>
+
+  <!-- _______________ Form _______________ -->
+  <div class="control-group">
+    <h5>Number of words</h5>
+    <label class="">
+      <input type="radio" name="number-of-words" value="3"> Three
+    </label>
+    <label class="">
+      <input type="radio" name="number-of-words" value="4" checked="checked"> Four
+    </label>
+    <label class="">
+      <input type="radio" name="number-of-words" value="5"> Five
+    </label>
+  </div>
+
+  <div class="control-group">
+    <h5>Size of numbers</h5>
+    <label class="">
+      <input type="radio" name="number-of-digits" value="0"> None
+    </label>
+    <label class="">
+      <input type="radio" name="number-of-digits" value="1"> One
+    </label>
+    <label class="">
+      <input type="radio" name="number-of-digits" value="2" checked="checked"> Two
+    </label>
+    <label class="">
+      <input type="radio" name="number-of-digits" value="3"> Three
+    </label>
+  </div>
+  <div>
+    <span class="generateBtn">Generate</span>
+  </div>
+
+  <!-- _______________ Results _______________ -->
+
+  <div class="loading">
+    Loading...
+  </div>
+
+  <div class="results" style="display:none;">
+    <div class="strength"></div>
+    <ul class="passwords"></ul>
   </div>
 
 </body>
